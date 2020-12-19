@@ -1,22 +1,28 @@
-#ifndef BULLET_H //i dunno why i used this
-#define BULLET_H //NOKI
-#endif
+#ifndef BULLET_H
+#define BULLET_H
+
 #include<SFML/Graphics.hpp>
 #include<iostream>
+
 class Bullet
 {
 private:
-	sf::Sprite shape;//the sprite for the bullet, the texture comes from the map variable we used in game.h
-	sf::Vector2f direction;//its a SFML special variable which will act as a direction variable(like struct{ int x, y; })
-	float moveSpeed;//speed of the bullet
-public:
 
-	Bullet();//check bullet.cpp
-	Bullet(sf::Texture* texture, float posX, float posY, float dirX, float dirY, float movementSpeed);
+	sf::Sprite shape;
+
+	sf::Vector2f direction;
+	float movementSpeed;
+
+public:
+	Bullet();
+	Bullet(sf::Texture* texture, float pos_x, float pos_y, float dir_x, float dir_y, float movement_speed);
 	virtual ~Bullet();
-	//Accessor to get bullet's boundary position, mainly for detecting collision and removing them when out of the screen
-	const sf::FloatRect getBounds() const;//returns the bounds of the sprites
-	void update();//updating the bullet with the latest data
-	void render(sf::RenderTarget* target);//rendering the bullet but as a reference as we are modifying a already drawn bullet
+
+	//Accessor
+	const sf::FloatRect getBounds() const;
+
+	void update();
+	void render(sf::RenderTarget* target);
 };
 
+#endif // !BULLET_H

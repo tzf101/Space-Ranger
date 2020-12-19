@@ -1,32 +1,49 @@
 #pragma once
+
 #include<SFML/Graphics.hpp>
 #include<SFML/System.hpp>
+#include<iostream>
+
 class Player
 {
 private:
-	sf::Sprite sprite; // means the object of the image file used for the player
-	sf::Texture texture;// texture is the image file, texture is what sits as a skin on the sprite
-	float movementSpeed;//the speed at which the spaceship moves
-	float attackCooldown;//determines how many shots the ship can fire before cooldown
-	float attackCooldownMax;//maximum shots before cooldown
-	//private functions
-	void initVariables();//init means initialize
+	sf::Sprite sprite;
+	sf::Texture texture;
+
+	float movementSpeed;
+
+	float attackCooldown;
+	float attackCooldownMax;
+
+	int hp;
+	int hpMax;
+
+	//Private functions
+	void initVariables();
 	void initTexture();
 	void initSprite();
+
 public:
-	Player();//check player.cpp to understand
+	Player();
 	virtual ~Player();
-	//Accessor to get the area of the player, mainly to detect collision
+
+	//Accessor
 	const sf::Vector2f& getPos() const;
+	const sf::FloatRect getBounds() const;
+	const int& getHp() const;
+	const int& getHpMax() const;
 
-	const bool canAttack();//checking whether the weapon is having a cooldown
+	//Modifiers
+	void setPosition(const sf::Vector2f pos);
+	void setPosition(const float x, const float y);
+	void setHp(const int hp);
+	void loseHp(const int value);
 
-	void move(const float dirX, const float dirY);//moving the ship
-	
-	void updateAttack();//updating the cooldown state, if it is not reached
+	//Functions
+	void move(const float dirX, const float dirY);
+	const bool canAttack();
 
-	void update();//updating the player with the latest pointer
-
-	void render(sf::RenderTarget& target);//we used the player as a pointer so that we can controll it by reference, thats why we passed its reference in the render funtion which will draw it
+	void updateAttack();
+	void update();
+	void render(sf::RenderTarget& target);
 };
-

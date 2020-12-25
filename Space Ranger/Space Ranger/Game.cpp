@@ -3,7 +3,7 @@
 //Private functions
 void Game::initWindow()
 {
-	this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "Swaglords of Space - Game 3", sf::Style::Close | sf::Style::Titlebar);
+	this->window = new sf::RenderWindow(sf::VideoMode(1920, 1080), "Space Ranger", sf::Style::Fullscreen);
 	this->window->setFramerateLimit(144);
 	this->window->setVerticalSyncEnabled(false);
 }
@@ -100,11 +100,6 @@ Game::~Game()
 		delete i;
 	}
 
-	//Delete enemies
-	for (auto *i : this->enemies)
-	{
-		delete i;
-	}
 }
 
 //Functions
@@ -136,16 +131,16 @@ void Game::updatePollEvents()
 void Game::updateInput()
 {
 	//Move player
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		this->player->move(-1.f, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		this->player->move(1.f, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 		this->player->move(0.f, -1.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		this->player->move(0.f, 1.f);
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->player->canAttack())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && this->player->canAttack())
 	{
 		this->bullets.push_back(
 			new Bullet(
@@ -224,60 +219,12 @@ void Game::updateBullets()
 
 void Game::updateEnemies()
 {
-	//Spawning
-	this->spawnTimer += 0.5f;
-	if (this->spawnTimer >= this->spawnTimerMax)
-	{
-		this->enemies.push_back(new Enemy(rand() % this->window->getSize().x-20.f, -100.f));
-		this->spawnTimer = 0.f;
-	}
-
-	//Update
-	unsigned counter = 0;
-	for (auto *enemy : this->enemies)
-	{
-		enemy->update();
-
-		//Bullet culling (top of screen)
-		if (enemy->getBounds().top > this->window->getSize().y)
-		{
-			//Delete enemy
-			delete this->enemies.at(counter);
-			this->enemies.erase(this->enemies.begin() + counter);
-		}
-		//Enemy player collision
-		else if(enemy->getBounds().intersects(this->player->getBounds()))
-		{
-			this->player->loseHp(this->enemies.at(counter)->getDamage());
-			delete this->enemies.at(counter);
-			this->enemies.erase(this->enemies.begin() + counter);
-		}
-
-		++counter;
-	}
+	
 }
 
 void Game::updateCombat()
 {
-	for (int i = 0; i < this->enemies.size(); ++i)
-	{
-		bool enemy_deleted = false;
-		for (size_t k = 0; k < this->bullets.size() && enemy_deleted == false; k++)
-		{
-			if (this->enemies[i]->getBounds().intersects(this->bullets[k]->getBounds()))
-			{
-				this->points += this->enemies[i]->getPoints();
-
-				delete this->enemies[i];
-				this->enemies.erase(this->enemies.begin() + i);
-
-				delete this->bullets[k];
-				this->bullets.erase(this->bullets.begin() + k);
-
-				enemy_deleted = true;
-			}
-		}
-	}
+	
 }
 
 void Game::update()
@@ -326,10 +273,6 @@ void Game::render()
 		bullet->render(this->window);
 	}
 
-	for (auto *enemy : this->enemies)
-	{
-		enemy->render(this->window);
-	}
 
 	this->renderGUI();
 

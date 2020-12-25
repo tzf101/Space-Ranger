@@ -18,8 +18,13 @@ Menu::Menu(float width, float height)
 
 	menu[2].setFont(font);
 	menu[2].setFillColor(sf::Color::White);
-	menu[2].setString("Exit");
+	menu[2].setString("High Scores");
 	menu[2].setPosition(sf::Vector2f(width / 10, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));
+
+	menu[3].setFont(font);
+	menu[3].setFillColor(sf::Color::White);
+	menu[3].setString("Exit");
+	menu[3].setPosition(sf::Vector2f(width / 10, height / (MAX_NUMBER_OF_ITEMS + 1) * 4));
 }
 
 Menu::~Menu()
@@ -75,4 +80,8 @@ void Menu::initBG()
 		std::cout << "Cant load BG\n";
 	}
 	menubg.setTexture(menubgTex);
+}
+
+void Menu::drawBG()
+{
 }

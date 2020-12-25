@@ -5,7 +5,6 @@
 #include<sstream>
 #include"Player.h"
 #include"Bullet.h"
-#include"Enemy.h"
 
 class Game
 {
@@ -40,7 +39,6 @@ private:
 	//Enemies
 	float spawnTimer;
 	float spawnTimerMax;
-	std::vector<Enemy*> enemies;
 
 	//Private functions
 	void initWindow();

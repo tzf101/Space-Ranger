@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "Menu.h"
-
 int main() {
 	int gamestart = 0;
 	sf::RenderWindow windoWW(sf::VideoMode(1920, 1080), "Space Ranger StartMenu", sf::Style::Fullscreen);
@@ -35,6 +34,10 @@ int main() {
 						std::cout << "Options\n";
 						break;
 					case 2:
+						std::cout << "High Scoeres\n";
+						system("Highscore.txt");
+						break;
+					case 3:
 						std::cout << "Exit\n";
 						windoWW.close();
 						break;

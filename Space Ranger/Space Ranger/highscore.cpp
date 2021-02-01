@@ -27,7 +27,7 @@ int main()
         fscanf(fp, " %s", temp_name);
         fscanf(fp, "%d", &temp_scr);
         score.push_back({temp_name,temp_scr});
-        cout<<temp_name<<" "<<temp_scr<<endl;
+        //cout<<temp_name<<" "<<temp_scr<<endl;
     }
     fclose(fp);
     sort(score.begin(),score.end(),compare);

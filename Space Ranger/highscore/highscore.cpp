@@ -37,9 +37,9 @@ int main()
         cout<<"Error opeing file."<<endl;
         exit(1);
     }
-    for(i=0; i<10; i++)
-    {
-        fprintf(fp, "%s %d\n",score[i].first.c_str(), score[i].second);
-    }
+    // for(i=0; i<10; i++)
+    // {
+    //     fprintf(fp, "%s %d\n",score[i].first.c_str(), score[i].second);
+    // }
     fclose(fp);
 }

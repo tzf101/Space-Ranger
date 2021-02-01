@@ -1,14 +1,4 @@
 ﻿  Game.cpp
-  main.cpp
-E:\Fardin Sir\Space Ranger\Space Ranger\main.cpp(7,50): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-E:\Fardin Sir\Space Ranger\Space Ranger\main.cpp(7,29): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
+  Player.cpp
   Generating Code...
   Space Ranger.vcxproj -> E:\Fardin Sir\Space Ranger\Debug\Space Ranger.exe

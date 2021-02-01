@@ -131,14 +131,22 @@ void Game::updatePollEvents()
 void Game::updateInput()
 {
 	//Move player
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		this->player->move(-1.f, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+	}
+		
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		this->player->move(1.f, 0.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+	}
+		
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		this->player->move(0.f, -1.f);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+	}
+		
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		this->player->move(0.f, 1.f);
+	}
+	
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && this->player->canAttack())
 	{

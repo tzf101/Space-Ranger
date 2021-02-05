@@ -1,5 +1,7 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "Game.h"
-
+#include "highscore.cpp"
+int pointx = 0, wrote = 0;
 //Private functions
 void Game::initWindow()
 {
@@ -145,7 +147,7 @@ void Game::updateInput()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 		this->player->move(0.f, 1.f);
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && this->player->canAttack())
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && this->player->canAttack())
 	{
 		this->bullets.push_back(
 			new Bullet(
@@ -267,7 +269,7 @@ void Game::updateCombat()
 			if (this->enemies[i]->getBounds().intersects(this->bullets[k]->getBounds()))
 			{
 				this->points += this->enemies[i]->getPoints();
-
+				pointx = this->points;
 				delete this->enemies[i];
 				this->enemies.erase(this->enemies.begin() + i);
 
@@ -334,8 +336,15 @@ void Game::render()
 	this->renderGUI();
 
 	//Game over screen
-	if (this->player->getHp() <= 0)
+	if (this->player->getHp() <= 0) {
+		if (wrote == 0) {
+			save("kashem", pointx);
+			wrote = 1;
+		}
 		this->window->draw(this->gameOverText);
+	}
+		
 
 	this->window->display();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) { this->window->close();  }
 }

@@ -1,20 +1,3 @@
-﻿  Bullet.cpp
-  Enemy.cpp
-F:\Space\Space Ranger\Space Ranger\Enemy.cpp(16,41): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-  Game.cpp
-F:\Space\Space Ranger\Space Ranger\Game.cpp(262,20): warning C4018: '<': signed/unsigned mismatch
-  main.cpp
-F:\Space\Space Ranger\Space Ranger\main.cpp(7,50): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-F:\Space\Space Ranger\Space Ranger\main.cpp(7,29): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-  Menu.cpp
-  Player.cpp
-  Generating Code...
-  Space Ranger.vcxproj -> F:\Space\Space Ranger\Debug\Space Ranger.exe
+﻿  Game.cpp
+E:\Fardin Sir\Space Ranger\Space Ranger\Game.cpp(264,20): warning C4018: '<': signed/unsigned mismatch
+  Space Ranger.vcxproj -> E:\Fardin Sir\Space Ranger\Debug\Space Ranger.exe

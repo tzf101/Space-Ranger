@@ -1,6 +1,6 @@
 #include "Player.h"
 
-std::string shipfile = "Textures/ship.png";
+std::string shipfile = "Textures/spritesheet.png";
 
 void Player::initVariables()
 {
@@ -26,7 +26,8 @@ void Player::initSprite()
 {
 	//Set the texture to the sprite
 	this->sprite.setTexture(this->texture);
-
+	this->rectSourceSprite = sf::IntRect(1496, 0, 1496, 1736);
+	this->sprite.setTextureRect(rectSourceSprite);
 	//Resize the sprite
 	this->sprite.scale(0.1f, 0.1f);
 }
@@ -88,10 +89,10 @@ void Player::loseHp(const int value)
 int last_move = 0;
 void Player::move(const float dirX, const float dirY)
 {
-	if (dirX == -1.f && dirY == 0.f && last_move != 1) { last_move = 1; this->texture.loadFromFile("Textures/ship-left.png"); }
-	else if (dirX == 1.f && dirY == 0.f && last_move != 2) { last_move = 2;  this->texture.loadFromFile("Textures/ship-right.png"); }
-	else if (dirX == 0.f && dirY == -1.f && last_move != 3) { last_move = 3;  this->texture.loadFromFile(shipfile); }
-	else if (dirX == 0.f && dirY == 1.f && last_move != 3) { last_move = 3;  this->texture.loadFromFile(shipfile); }
+	if (dirX == -1.f && dirY == 0.f && last_move != 1) { last_move = 1; this->rectSourceSprite.left = 0; this->rectSourceSprite.width = 1496; this->sprite.setTextureRect(rectSourceSprite); }
+	else if (dirX == 1.f && dirY == 0.f && last_move != 2) { last_move = 2;  this->rectSourceSprite.left = 2992; this->rectSourceSprite.width = 1496;  this->sprite.setTextureRect(rectSourceSprite); }
+	else if (dirX == 0.f && dirY == -1.f && last_move != 3) { last_move = 3; this->rectSourceSprite.left = 1496; this->rectSourceSprite.width = 1496;  this->sprite.setTextureRect(rectSourceSprite);}
+	else if (dirX == 0.f && dirY == 1.f && last_move != 3) { last_move = 3;  this->rectSourceSprite.left = 1496; this->rectSourceSprite.width = 1496;  this->sprite.setTextureRect(rectSourceSprite);}
 	this->sprite.move(this->movementSpeed * dirX, this->movementSpeed * dirY);
 }
 
@@ -104,6 +105,14 @@ const bool Player::canAttack()
 	}
 
 	return false;
+}
+
+void Player::powerup(const int poiiintss)
+{
+	if (poiiintss >= 80) {
+		this->rectSourceSprite.top = 1736;
+		this->sprite.setTextureRect(rectSourceSprite);
+	}
 }
 
 void Player::updateAttack()

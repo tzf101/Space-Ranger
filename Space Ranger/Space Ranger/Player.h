@@ -9,7 +9,7 @@ class Player
 private:
 	sf::Sprite sprite;
 	sf::Texture texture;
-
+	sf::IntRect rectSourceSprite;
 	float movementSpeed;
 
 	float attackCooldown;
@@ -42,7 +42,7 @@ public:
 	//Functions
 	void move(const float dirX, const float dirY);
 	const bool canAttack();
-
+	void powerup(const int poiiintss);
 	void updateAttack();
 	void update();
 	void render(sf::RenderTarget& target);

@@ -270,6 +270,7 @@ void Game::updateCombat()
 			{
 				this->points += this->enemies[i]->getPoints();
 				pointx = this->points;
+				this->player->powerup(pointx);
 				delete this->enemies[i];
 				this->enemies.erase(this->enemies.begin() + i);
 
@@ -338,7 +339,7 @@ void Game::render()
 	//Game over screen
 	if (this->player->getHp() <= 0) {
 		if (wrote == 0) {
-			save("kashem", pointx);
+			save("Tariq", pointx);
 			wrote = 1;
 		}
 		this->window->draw(this->gameOverText);

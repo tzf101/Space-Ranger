@@ -22,6 +22,7 @@ private:
 	sf::Text pointText;
 
 	sf::Text gameOverText;
+	sf::Text powerUpText;
 
 	//World
 	sf::Texture worldBackgroundTex;

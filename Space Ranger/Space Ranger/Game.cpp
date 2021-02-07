@@ -37,6 +37,14 @@ void Game::initGUI()
 		this->window->getSize().x / 2.f - this->gameOverText.getGlobalBounds().width / 2.f,
 		this->window->getSize().y / 2.f - this->gameOverText.getGlobalBounds().height / 2.f);
 
+	this->powerUpText.setFont(this->font);
+	this->powerUpText.setCharacterSize(60);
+	this->powerUpText.setFillColor(sf::Color::Red);
+	this->powerUpText.setString("Power Up!");
+	this->powerUpText.setPosition(
+		this->window->getSize().x / 2.f - this->powerUpText.getGlobalBounds().width / 2.f,
+		this->window->getSize().y / 2.f - this->powerUpText.getGlobalBounds().height / 2.f);
+
 	//Init player GUI
 	this->playerHpBar.setSize(sf::Vector2f(300.f, 25.f));
 	this->playerHpBar.setFillColor(sf::Color::Red);
@@ -335,6 +343,11 @@ void Game::render()
 	}
 
 	this->renderGUI();
+
+	if (pointx > 80 && pointx <85) {
+		
+		this->window->draw(this->powerUpText);
+	}
 
 	//Game over screen
 	if (this->player->getHp() <= 0) {

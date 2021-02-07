@@ -1,3 +1,4 @@
+Tariq 546
 kashem 24
 kokor 14
 A 12
@@ -7,4 +8,3 @@ d 9
 e 8
 f 7
 g 6
-h 5

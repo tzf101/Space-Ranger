@@ -1,3 +1,3 @@
 ﻿  Game.cpp
-F:\New folder (2)\Space Ranger\Space Ranger\Game.cpp(272,20): warning C4018: '<': signed/unsigned mismatch
+F:\New folder (2)\Space Ranger\Space Ranger\Game.cpp(277,20): warning C4018: '<': signed/unsigned mismatch
   Space Ranger.vcxproj -> F:\New folder (2)\Space Ranger\Debug\Space Ranger.exe

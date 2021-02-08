@@ -258,6 +258,11 @@ void Game::updateEnemies()
 		//Enemy player collision
 		else if (enemy->getBounds().intersects(this->player->getBounds()))
 		{
+			if (!music.openFromFile("music/gg.ogg")) {
+				std::cout << "cant open music";
+			}
+
+			music.play();
 			this->player->loseHp(this->enemies.at(counter)->getDamage());
 			delete this->enemies.at(counter);
 			this->enemies.erase(this->enemies.begin() + counter);
@@ -276,6 +281,11 @@ void Game::updateCombat()
 		{
 			if (this->enemies[i]->getBounds().intersects(this->bullets[k]->getBounds()))
 			{
+				if (!music.openFromFile("music/gg.ogg")) {
+					std::cout << "cant open music";
+				}
+
+				music.play();
 				this->points += this->enemies[i]->getPoints();
 				pointx = this->points;
 				this->player->powerup(pointx);
@@ -344,8 +354,13 @@ void Game::render()
 
 	this->renderGUI();
 
-	if (pointx > 80 && pointx <85) {
-		
+	if (pointx > 80 && pointx <90) {
+		if(!music.openFromFile("music/gg.ogg")) {
+			std::cout << "cant open music";
+		}
+
+		music.play();
+	
 		this->window->draw(this->powerUpText);
 	}
 
@@ -356,6 +371,7 @@ void Game::render()
 			wrote = 1;
 		}
 		this->window->draw(this->gameOverText);
+		
 	}
 		
 

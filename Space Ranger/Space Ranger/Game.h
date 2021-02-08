@@ -6,6 +6,7 @@
 #include"Player.h"
 #include"Bullet.h"
 #include"Enemy.h"
+#include <SFML/Audio.hpp>
 
 class Game
 {
@@ -53,6 +54,8 @@ private:
 	void initPlayer();
 	void initEnemies();
 
+	sf::Music music;
+
 public:
 	Game();
 	virtual ~Game();
@@ -73,4 +76,7 @@ public:
 	void renderGUI();
 	void renderWorld();
 	void render();
+
+	void startmusic();
+	void stopmusic();
 };

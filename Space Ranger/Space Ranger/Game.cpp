@@ -258,7 +258,7 @@ void Game::updateEnemies()
 		//Enemy player collision
 		else if (enemy->getBounds().intersects(this->player->getBounds()))
 		{
-			if (!music.openFromFile("music/gg.ogg")) {
+			if (!music.openFromFile("music/Explosion1.ogg")) {
 				std::cout << "cant open music";
 			}
 
@@ -281,7 +281,7 @@ void Game::updateCombat()
 		{
 			if (this->enemies[i]->getBounds().intersects(this->bullets[k]->getBounds()))
 			{
-				if (!music.openFromFile("music/gg.ogg")) {
+				if (!music.openFromFile("music/GunSilencer.ogg")) {
 					std::cout << "cant open music";
 				}
 

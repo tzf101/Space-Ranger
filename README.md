@@ -4,3 +4,10 @@ Space rangers is a 2d shoot‘em up game. It is based on an adventure in space o
 The objective of the game is to reach the destination by surviving a certain time limit or to destroy certain amount of asteroids on its way.
 
 There are variations in the levels with varying difficulty including the change in the speed the asteroids come at and also boss levels.
+# Tech Stack
+- C++
+- SFML
+# Screenshots
+<img src="https://i.ibb.co/pybL94h/Capture.jpg" alt="Capture" border="0">
+<img src="https://i.ibb.co/bFYrL20/unknown-1.png" alt="unknown-1" border="0">
+<img src="https://i.ibb.co/FxCmT97/unknown.png" alt="unknown" border="0">
